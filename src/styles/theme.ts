@@ -1,21 +1,21 @@
 export const theme = {
   colors: {
-    primaryColor: '#8c65bd',
-    secondaryColor: '#DC9202',
-    secondarLightyColor: '#F2EAE1',
+    primaryColor: '#333333',
+    secondaryColor: '#B22E6F',
     white: '#FFFFFF',
-    mediumGray: '#DDDDDD',
-    darkGray: '#777',
+    mediumGray: '#C096A7',
+    darkGray: 'rgba(0, 0, 0, 0.4)',
+    messageDiv: 'rgba(255, 255, 255, 0.4)',
   },
   font: {
     family: {
-      default: "'Open Sans', sans-serif",
+      default: "'Heebo', sans-serif",
       secondary: "'Montserrat', sans-serif",
     },
     sizes: {
       xsmall: '1.4rem',
       small: '1.6rem',
-      medium: '2.4rem',
+      medium: '2rem',
       large: '3.2rem',
       xlarge: '4.0rem',
       xxlarge: '4.8rem',
@@ -24,10 +24,9 @@ export const theme = {
     },
   },
   media: {
+    lteMinimum: '(max-width: 768px)',
     lteMedium: '(max-width: 1024px)',
     lteLarge: '(min-width: 1024px)',
-    hgtLarge: '(max-heigth: 1000px)',
-    hgtMinimun: '1000px',
   },
   spacings: {
     xsmall: '8rem',

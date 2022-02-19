@@ -6,12 +6,16 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { env } from './environments';
+import { Home } from './Pages/Home';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <App />
+        <Routes>
+          <Route path={env.ROUTER_UTILS.base.login} element={<App />} />
+          <Route path={env.ROUTER_UTILS.base.home} element={<Home />} />
+        </Routes>
       </BrowserRouter>
       <GlobalStyles />
     </ThemeProvider>

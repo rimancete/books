@@ -3,11 +3,13 @@ import { storage, StorageItemEnum } from '../lib/cache';
 import axios from './axios.service';
 
 async function signIn(body: AuthenticateModel) {
-  await axios.post<UserModel>('/auth/sign-in', body).then((response) => {
-    storage.set(StorageItemEnum.Auth, response.headers['authorization']);
-    storage.set(StorageItemEnum.User, response.data);
-    return response.data;
-  });
+  const response = await axios
+    .post<UserModel>('/auth/sign-in', body)
+    .then((response) => {
+      storage.set(StorageItemEnum.Auth, response.headers['authorization']);
+      storage.set(StorageItemEnum.User, response.data);
+    });
+  return response;
 }
 
 function getCurrentUser() {

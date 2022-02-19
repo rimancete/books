@@ -17,18 +17,19 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   body {
     font-size: 1.6rem;
     font-family: ${({ theme }) => theme.font.family.default};
+
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${({ theme }) => theme.font.family.secondary};
     margin: ${({ theme }) => theme.spacings.large} 0;
     color: ${({ theme }) => theme.colors.primaryColor};
+    font-weight: 900
   }
 
   p {
     margin: ${({ theme }) => theme.spacings.medium} 0;
-    font-size: 1.05em;
-    color: ${({ theme }) => theme.colors.white};
+    font-size: 1em;
+    color: ${({ theme }) => theme.colors.primaryColor};
   }
 
   ul, ol {
@@ -50,32 +51,35 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   }
 
   button {
-    width: 100%;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.secondaryColor};
     cursor: pointer;
-    background: ${({ theme }) => theme.colors.secondaryColor};;
-    border-radius: 10px;
-    border: 4px solid transparent;
-    padding: 15px 30px;
+    background: ${({ theme }) => theme.colors.white};
+    border-radius: 20px;
+    border: none;
+    padding: 10px 25px;
     font-size: ${({ theme }) => theme.font.sizes.medium};
-    transition: all, 0.3s;
+    /* transition: all, 0.3s; */
   }
-  button:hover {
-    border-color: ${({ theme }) => theme.colors.primaryColor};
+  /* button:hover {
+    background: ${({ theme }) => theme.colors.secondaryColor};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   button:disabled {
       background: ${({ theme }) => theme.colors.mediumGray};
       cursor: not-allowed;
-    }
+  } */
 
-  input[type='text'],[type='search'] {
-      font-size: ${({ theme }) => theme.font.sizes.large};
+  input[type='text'],[type='password'] {
+      font-size: ${({ theme }) => theme.font.sizes.medium};
       width: 100%;
-      border-radius: 5px;
-      padding: 5px 10px;
+      background: transparent;
+      border: none;
+      color: ${({ theme }) => theme.colors.white};
+      padding: 5px 0px;
       &::placeholder {
         font-size: 1em;
+        color: ${({ theme }) => theme.colors.mediumGray};
       }
   }
   select {

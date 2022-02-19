@@ -1,16 +1,43 @@
-import { signIn } from '../../services/auth.service';
-import { getBooksById } from '../../services/user.service';
+import { useEffect, useState } from 'react';
+import { Layout } from '../../components/Layout';
+import { LoginForm } from '../../components/LoginForm';
+import { LoginContainer } from './styles';
 
 export function Login() {
-  const onSubmit = () => {
-    // logout();
-    signIn({
-      email: 'desafio@ioasys.com.br',
-      password: '12341234',
-    });
-    // getBooks();
-    getBooksById();
-  };
+  const [width, setWidth] = useState<number>();
+  const [heigth, setHeigth] = useState<number>();
 
-  return <button onClick={onSubmit}>Oi</button>;
+  function getWindowsDimensions() {
+    const { innerHeight: height, innerWidth: width } = window;
+    return {
+      width,
+      height,
+    };
+  }
+
+  useEffect(() => {
+    const handleSize = () => {
+      const { width, height } = getWindowsDimensions();
+      setWidth(width);
+      setHeigth(height);
+    };
+    window.addEventListener('resize', handleSize);
+    return () => window.removeEventListener('resize', handleSize);
+  }, []);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    setHeigth(window.innerHeight);
+  }, []);
+
+  return (
+    <Layout bgImage="/assets/images/background-mobile.svg">
+      <LoginContainer
+        heigth={heigth ? heigth : window.innerHeight}
+        width={width ? width : window.innerWidth}
+      >
+        <LoginForm />
+      </LoginContainer>
+    </Layout>
+  );
 }
