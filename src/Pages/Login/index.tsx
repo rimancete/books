@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Layout } from '../../components/Layout';
 import { LoginForm } from '../../components/LoginForm';
+import { getWindowsDimensions } from '../../services/screen-size.service';
 import { LoginContainer } from './styles';
 
 export function Login() {
   const [width, setWidth] = useState<number>();
   const [heigth, setHeigth] = useState<number>();
-
-  function getWindowsDimensions() {
-    const { innerHeight: height, innerWidth: width } = window;
-    return {
-      width,
-      height,
-    };
-  }
 
   useEffect(() => {
     const handleSize = () => {

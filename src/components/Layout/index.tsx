@@ -1,22 +1,17 @@
 import * as Styled from './styles';
 import { useEffect, useState } from 'react';
+import { getWindowsDimensions } from '../../services/screen-size.service';
+import { Header } from './Header';
 
 interface LayoutProps {
   children: React.ReactNode;
   bgImage?: string;
+  hasHeader?: boolean;
 }
 
-export const Layout = ({ children, bgImage }: LayoutProps) => {
+export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
   const [width, setWidth] = useState<number>();
   const [heigth, setHeigth] = useState<number>();
-
-  function getWindowsDimensions() {
-    const { innerHeight: height, innerWidth: width } = window;
-    return {
-      width,
-      height,
-    };
-  }
 
   useEffect(() => {
     const handleSize = () => {
@@ -29,7 +24,7 @@ export const Layout = ({ children, bgImage }: LayoutProps) => {
     return () => window.removeEventListener('resize', handleSize);
   }, []);
   return (
-    <Styled.Container>
+    <Styled.Container hasHeader={hasHeader}>
       {bgImage ? (
         width && heigth ? (
           <Styled.BGImage>
@@ -51,8 +46,16 @@ export const Layout = ({ children, bgImage }: LayoutProps) => {
           </Styled.BGImage>
         )
       ) : (
-        <></>
+        <Styled.BGImage>
+          <Styled.BackgroundGradient
+            style={{
+              width: window.innerWidth,
+            }}
+          ></Styled.BackgroundGradient>
+        </Styled.BGImage>
       )}
+
+      {hasHeader && <Header />}
       <div className="content">{children}</div>
     </Styled.Container>
   );

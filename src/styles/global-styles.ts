@@ -105,8 +105,8 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   .icon-pressable {
     cursor: pointer;
     color: ${({ theme }) => theme.colors.primaryColor};
-    text-decoration: none;
-    border-color: transparent;
+    border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme.colors.lightGray};
     transition: all, 0.3s;
   }
   .icon-pressable:hover {

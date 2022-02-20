@@ -3,6 +3,7 @@ export const theme = {
     primaryColor: '#333333',
     secondaryColor: '#B22E6F',
     white: '#FFFFFF',
+    lightGray: 'rgba(51, 51, 51, 0.2)',
     mediumGray: '#C096A7',
     darkGray: 'rgba(0, 0, 0, 0.4)',
     messageDiv: 'rgba(255, 255, 255, 0.4)',

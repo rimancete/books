@@ -28,9 +28,6 @@ export const InputContent = styled.div`
 export const FormErrorContent = styled.div`
   ${({ theme }) => css`
     width: 60%;
-    /* height: 20px; */
-    /* display: flex;
-    flex-direction: row; */
     align-items: center;
     background: ${theme.colors.messageDiv};
     padding: 10px;
