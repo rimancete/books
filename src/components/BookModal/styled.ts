@@ -24,27 +24,23 @@ export const ModalBackground = styled.div`
   align-items: center;
 `;
 
-export const ModalCloseButton = styled.div<ModalContentProps>`
-  /* height: ${(p) => (p.width < 768 ? '95%' : '')};
-  overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')}; */
-  ${({ theme }) => css`
-    display: flex;
-    margin: 30px 0;
-  `}
+export const ModalCloseButton = styled.div`
+  display: flex;
+  margin: 30px 0;
 `;
 export const ModalContent = styled.div<ModalContentProps>`
-  height: ${(p) => (p.width < 768 ? '89%' : '')};
+  height: ${(p) => (p.width < 768 ? '89%' : '608px')};
   overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')};
+  flex-direction: ${(p) => (p.width < 768 ? 'column' : '')};
+  max-width: ${(p) => (p.width < 768 ? '' : '769px')};
   ${({ theme }) => css`
     background: ${theme.colors.white};
     width: 85%;
     min-width: 288px;
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.6) 0px 7px 29px 0px;
-    /* overflow-y: auto; */
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
   `}
 
   h1 {
@@ -56,19 +52,22 @@ export const ModalContent = styled.div<ModalContentProps>`
   }
 `;
 
-export const ModalContentHeader = styled.div`
-  /* width: 100%; */
+export const ModalContentHeader = styled.div<ModalContentProps>`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: ${(p) => (p.width < 768 ? 'center' : '')};
 `;
-export const ModalContentHeaderImage = styled.div`
+export const ModalContentHeaderImage = styled.div<ModalContentProps>`
   display: flex;
   justify-content: center;
+  margin-top: ${(p) => (p.width < 768 ? '' : '20px')};
+  margin-bottom: ${(p) => (p.width < 768 ? '' : '20px')};
+  margin-left: ${(p) => (p.width < 768 ? '' : '20px')};
+  margin-right: ${(p) => (p.width < 768 ? '' : '50px')};
 
   img {
-    width: 240px;
-    height: 351px;
+    width: ${(p) => (p.width < 768 ? '240px' : '349px')};
+    height: ${(p) => (p.width < 768 ? '351px' : '512px')};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   }
 `;
@@ -83,7 +82,8 @@ export const ModalContentHeaderImageDefault = styled.div`
 `;
 
 export const ModalContentTitle = styled.div``;
-export const ModalContentTitleText = styled.h1`
+export const ModalContentTitleText = styled.h1<ModalContentProps>`
+  margin: ${(p) => (p.width < 768 ? '' : '0')};
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.large};
     font-weight: 500;
@@ -107,6 +107,9 @@ export const ModalContentBody = styled.div`
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
+`;
+export const ModalContentBodyHeader = styled.div`
+  margin-bottom: 10px;
 `;
 
 export const ModalContentBodyTitle = styled.h2`
@@ -135,21 +138,38 @@ export const ModalContentBodyText = styled.h3`
 export const ModalContentFooter = styled.div``;
 export const ModalContentFooterContent = styled.div`
   margin-top: 20px;
-
   img {
     margin-right: 10px;
   }
 `;
-export const ModalContentFooterDescription = styled.span`
+export const ModalContentFooterdescription = styled.div<ModalContentProps>``;
+
+export const ModalContentFooterDescriptionText = styled.span`
   ${({ theme }) => css`
     font-weight: 400;
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.xLightGray};
   `}
 `;
-export const ModalContentData = styled.div``;
+export const ModalContentData = styled.div<ModalContentProps>`
+  overflow: ${(p) => (p.width < 768 ? '' : 'auto')};
+  margin-top: ${(p) => (p.width < 768 ? '' : '20px')};
+  margin-bottom: ${(p) => (p.width < 768 ? '' : '20px')};
+`;
 
+// testar em mobile
 export const ModalContentBodyTitleContent = styled.div`
   width: 80px;
   margin: -3px 0;
+`;
+export const ModalContentFooterTitleContent = styled.div<ModalContentProps>`
+  margin-bottom: ${(p) => (p.width < 768 ? '' : '-10px')};
+`;
+
+export const ModalContentFooterText = styled.h3`
+  ${({ theme }) => css`
+    font-weight: 400;
+    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.xLightGray};
+  `}
 `;

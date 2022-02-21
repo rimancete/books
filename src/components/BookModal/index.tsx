@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BookDataType } from '../../interfaces/data';
-import {
-  serializedCardTitle,
-  serializedModalTitle,
-} from '../../services/serialize-string.service';
+import { serializedModalTitle } from '../../services/serialize-string.service';
 import {
   ModalBackground,
   ModalCloseButton,
@@ -11,13 +8,17 @@ import {
   ModalContent,
   ModalContentBody,
   ModalContentBodyContent,
+  ModalContentBodyHeader,
   ModalContentBodyText,
   ModalContentBodyTitle,
   ModalContentBodyTitleContent,
   ModalContentData,
   ModalContentFooter,
   ModalContentFooterContent,
-  ModalContentFooterDescription,
+  ModalContentFooterdescription,
+  ModalContentFooterDescriptionText,
+  ModalContentFooterText,
+  ModalContentFooterTitleContent,
   ModalContentHeader,
   ModalContentHeaderImage,
   ModalContentHeaderImageDefault,
@@ -54,7 +55,7 @@ export function BookModal({ data }: BookModalProps) {
   return (
     <ModalContainer>
       <ModalBackground onClick={handleClose} className="modal-visible">
-        <ModalCloseButton width={window.innerWidth}>
+        <ModalCloseButton>
           <IoCloseOutline
             size={40}
             className="icon-pressable"
@@ -71,17 +72,17 @@ export function BookModal({ data }: BookModalProps) {
           onClick={(e) => e.stopPropagation()}
           width={window.innerWidth}
         >
-          <ModalContentHeaderImage>
+          <ModalContentHeaderImage width={window.innerWidth}>
             {!imgLoadError ? (
               <img src={data.imageUrl} />
             ) : (
               <ModalContentHeaderImageDefault />
             )}
           </ModalContentHeaderImage>
-          <ModalContentData>
-            <ModalContentHeader>
+          <ModalContentData width={window.innerWidth}>
+            <ModalContentHeader width={window.innerWidth}>
               <ModalContentTitle>
-                <ModalContentTitleText>
+                <ModalContentTitleText width={window.innerWidth}>
                   {serializedModalTitle(data.title)}
                 </ModalContentTitleText>
                 <ModalContentTitleAuthor>
@@ -99,7 +100,9 @@ export function BookModal({ data }: BookModalProps) {
             </ModalContentHeader>
 
             <ModalContentBody>
-              <ModalContentBodyTitle>INFORMAÇÕES</ModalContentBodyTitle>
+              <ModalContentBodyHeader>
+                <ModalContentBodyTitle>INFORMAÇÕES</ModalContentBodyTitle>
+              </ModalContentBodyHeader>
 
               <ModalContentBodyContent>
                 <ModalContentBodyTitleContent>
@@ -160,12 +163,18 @@ export function BookModal({ data }: BookModalProps) {
             </ModalContentBody>
 
             <ModalContentFooter>
-              <ModalContentBodyTitle>RESENHA DA EDITORA</ModalContentBodyTitle>
+              <ModalContentFooterTitleContent width={window.innerWidth}>
+                <ModalContentBodyTitle>
+                  RESENHA DA EDITORA
+                </ModalContentBodyTitle>
+              </ModalContentFooterTitleContent>
               <ModalContentFooterContent>
-                <img src="/assets/images/quotation-marks.svg" />
-                <ModalContentFooterDescription>
+                {/* <ModalContentFooterDescriptionText> */}
+                <ModalContentFooterText>
+                  <img src="/assets/images/quotation-marks.svg" />
                   {data.description}
-                </ModalContentFooterDescription>
+                </ModalContentFooterText>
+                {/* </ModalContentFooterDescriptionText> */}
               </ModalContentFooterContent>
             </ModalContentFooter>
           </ModalContentData>
