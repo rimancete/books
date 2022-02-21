@@ -19,23 +19,32 @@ export const ModalBackground = styled.div`
   top: 0px;
   left: 0px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
+export const ModalCloseButton = styled.div<ModalContentProps>`
+  /* height: ${(p) => (p.width < 768 ? '95%' : '')};
+  overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')}; */
+  ${({ theme }) => css`
+    display: flex;
+    margin: 30px 0;
+  `}
+`;
 export const ModalContent = styled.div<ModalContentProps>`
-  height: ${(p) => (p.width < 768 ? '95%' : '')};
+  height: ${(p) => (p.width < 768 ? '89%' : '')};
   overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')};
   ${({ theme }) => css`
     background: ${theme.colors.white};
-    width: 90%;
+    width: 85%;
     min-width: 288px;
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.6) 0px 7px 29px 0px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     border-radius: 5px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
   `}
 
   h1 {
@@ -93,7 +102,7 @@ export const ModalContentTitleAuthorText = styled.h3`
 `;
 
 export const ModalContentBody = styled.div`
-  margin: 40px 0;
+  margin: 35px 0;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -104,12 +113,14 @@ export const ModalContentBodyTitle = styled.h2`
   ${({ theme }) => css`
     font-weight: 500;
     font-size: ${theme.font.sizes.xsmall};
+    display: inline;
   `}
 `;
 export const ModalContentBodyContent = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const ModalContentBodyText = styled.h3`
@@ -117,13 +128,13 @@ export const ModalContentBodyText = styled.h3`
     font-weight: 400;
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.xLightGray};
+    text-align: right;
   `}
 `;
 
 export const ModalContentFooter = styled.div``;
 export const ModalContentFooterContent = styled.div`
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
 
   img {
     margin-right: 10px;
@@ -135,4 +146,10 @@ export const ModalContentFooterDescription = styled.span`
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.xLightGray};
   `}
+`;
+export const ModalContentData = styled.div``;
+
+export const ModalContentBodyTitleContent = styled.div`
+  width: 80px;
+  margin: -3px 0;
 `;

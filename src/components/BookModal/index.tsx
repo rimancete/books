@@ -6,12 +6,15 @@ import {
 } from '../../services/serialize-string.service';
 import {
   ModalBackground,
+  ModalCloseButton,
   ModalContainer,
   ModalContent,
   ModalContentBody,
   ModalContentBodyContent,
   ModalContentBodyText,
   ModalContentBodyTitle,
+  ModalContentBodyTitleContent,
+  ModalContentData,
   ModalContentFooter,
   ModalContentFooterContent,
   ModalContentFooterDescription,
@@ -23,6 +26,9 @@ import {
   ModalContentTitleAuthorText,
   ModalContentTitleText,
 } from './styled';
+
+import { IoCloseOutline } from 'react-icons/io5';
+import { theme } from '../../styles/theme';
 
 interface BookModalProps {
   data: BookDataType;
@@ -48,76 +54,107 @@ export function BookModal({ data }: BookModalProps) {
   return (
     <ModalContainer>
       <ModalBackground onClick={handleClose} className="modal-visible">
+        <ModalCloseButton width={window.innerWidth}>
+          <IoCloseOutline
+            size={40}
+            className="icon-pressable"
+            style={{
+              padding: 8,
+              backgroundColor: theme.colors.white,
+              position: 'absolute',
+              right: 20,
+              top: 10,
+            }}
+          />
+        </ModalCloseButton>
         <ModalContent
           onClick={(e) => e.stopPropagation()}
           width={window.innerWidth}
         >
-          <ModalContentHeader>
-            <ModalContentHeaderImage>
-              {!imgLoadError ? (
-                <img src={data.imageUrl} />
-              ) : (
-                <ModalContentHeaderImageDefault />
-              )}
-            </ModalContentHeaderImage>
-            <ModalContentTitle>
-              <ModalContentTitleText>
-                {serializedModalTitle(data.title)}
-              </ModalContentTitleText>
-              <ModalContentTitleAuthor>
-                {data.authors.map((author, index) => (
-                  <ModalContentTitleAuthorText key={index}>
-                    {author}
-                    {data.authors.length > 1 &&
-                      data.authors.length !== index + 1 &&
-                      ','}
-                    &nbsp;
-                  </ModalContentTitleAuthorText>
-                ))}
-              </ModalContentTitleAuthor>
-            </ModalContentTitle>
+          <ModalContentHeaderImage>
+            {!imgLoadError ? (
+              <img src={data.imageUrl} />
+            ) : (
+              <ModalContentHeaderImageDefault />
+            )}
+          </ModalContentHeaderImage>
+          <ModalContentData>
+            <ModalContentHeader>
+              <ModalContentTitle>
+                <ModalContentTitleText>
+                  {serializedModalTitle(data.title)}
+                </ModalContentTitleText>
+                <ModalContentTitleAuthor>
+                  {data.authors.map((author, index) => (
+                    <ModalContentTitleAuthorText key={index}>
+                      {author}
+                      {data.authors.length > 1 &&
+                        data.authors.length !== index + 1 &&
+                        ','}
+                      &nbsp;
+                    </ModalContentTitleAuthorText>
+                  ))}
+                </ModalContentTitleAuthor>
+              </ModalContentTitle>
+            </ModalContentHeader>
 
             <ModalContentBody>
               <ModalContentBodyTitle>INFORMAÇÕES</ModalContentBodyTitle>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>Páginas</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>Páginas</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>
                   {data.pageCount} páginas
                 </ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>Editora</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>Editora</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>
                   Editora {data.publisher}
                 </ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>Publicação</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>Publicação</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>{data.published}</ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>Idioma</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>Idioma</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>{data.language}</ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>Título Original</ModalContentBodyTitle>
-                <ModalContentBodyText>
-                  {serializedCardTitle(data.title)}
-                </ModalContentBodyText>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitleContent>
+                    <ModalContentBodyTitle>
+                      Título Original
+                    </ModalContentBodyTitle>
+                  </ModalContentBodyTitleContent>
+                </ModalContentBodyTitleContent>
+                <ModalContentBodyText>{data.title}</ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>ISBN-10</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>ISBN-10</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>{data.isbn10}</ModalContentBodyText>
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>ISBN-13</ModalContentBodyTitle>
+                <ModalContentBodyTitleContent>
+                  <ModalContentBodyTitle>ISBN-13</ModalContentBodyTitle>
+                </ModalContentBodyTitleContent>
                 <ModalContentBodyText>{data.isbn13}</ModalContentBodyText>
               </ModalContentBodyContent>
             </ModalContentBody>
@@ -131,7 +168,7 @@ export function BookModal({ data }: BookModalProps) {
                 </ModalContentFooterDescription>
               </ModalContentFooterContent>
             </ModalContentFooter>
-          </ModalContentHeader>
+          </ModalContentData>
         </ModalContent>
       </ModalBackground>
     </ModalContainer>
