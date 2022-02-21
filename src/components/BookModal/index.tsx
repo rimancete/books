@@ -13,6 +13,8 @@ import {
   ModalContentBodyText,
   ModalContentBodyTitle,
   ModalContentFooter,
+  ModalContentFooterContent,
+  ModalContentFooterDescription,
   ModalContentHeader,
   ModalContentHeaderImage,
   ModalContentHeaderImageDefault,
@@ -46,7 +48,10 @@ export function BookModal({ data }: BookModalProps) {
   return (
     <ModalContainer>
       <ModalBackground onClick={handleClose} className="modal-visible">
-        <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ModalContent
+          onClick={(e) => e.stopPropagation()}
+          width={window.innerWidth}
+        >
           <ModalContentHeader>
             <ModalContentHeaderImage>
               {!imgLoadError ? (
@@ -112,13 +117,19 @@ export function BookModal({ data }: BookModalProps) {
               </ModalContentBodyContent>
 
               <ModalContentBodyContent>
-                <ModalContentBodyTitle>ISBN-3</ModalContentBodyTitle>
+                <ModalContentBodyTitle>ISBN-13</ModalContentBodyTitle>
                 <ModalContentBodyText>{data.isbn13}</ModalContentBodyText>
               </ModalContentBodyContent>
             </ModalContentBody>
 
             <ModalContentFooter>
               <ModalContentBodyTitle>RESENHA DA EDITORA</ModalContentBodyTitle>
+              <ModalContentFooterContent>
+                <img src="/assets/images/quotation-marks.svg" />
+                <ModalContentFooterDescription>
+                  {data.description}
+                </ModalContentFooterDescription>
+              </ModalContentFooterContent>
             </ModalContentFooter>
           </ModalContentHeader>
         </ModalContent>

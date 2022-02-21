@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+interface ModalContentProps {
+  width: number;
+}
+
 export const ModalContainer = styled.div`
   display: flex;
   .modal-visible.modal-hide {
@@ -19,16 +23,17 @@ export const ModalBackground = styled.div`
   align-items: center;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div<ModalContentProps>`
+  height: ${(p) => (p.width < 768 ? '95%' : '')};
+  overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')};
   ${({ theme }) => css`
     background: ${theme.colors.white};
-    width: 40%;
-    /* height: 970px; */
-    min-width: 300px;
+    width: 90%;
+    min-width: 288px;
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.6) 0px 7px 29px 0px;
     overflow-y: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
   `}
@@ -46,11 +51,11 @@ export const ModalContentHeader = styled.div`
   /* width: 100%; */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
 `;
 export const ModalContentHeaderImage = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: center;
 
   img {
     width: 240px;
@@ -89,6 +94,10 @@ export const ModalContentTitleAuthorText = styled.h3`
 
 export const ModalContentBody = styled.div`
   margin: 40px 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ModalContentBodyTitle = styled.h2`
@@ -112,3 +121,18 @@ export const ModalContentBodyText = styled.h3`
 `;
 
 export const ModalContentFooter = styled.div``;
+export const ModalContentFooterContent = styled.div`
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  img {
+    margin-right: 10px;
+  }
+`;
+export const ModalContentFooterDescription = styled.span`
+  ${({ theme }) => css`
+    font-weight: 400;
+    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.xLightGray};
+  `}
+`;
