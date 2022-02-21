@@ -1,40 +1,72 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getCurrentUser } from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
 import { env } from '../../environments';
 import { Layout } from '../../components/Layout';
 import { HomeContainer } from './styles';
+
+import { getBooks } from '../../services/user.service';
+import { Cards } from '../../components/Cards';
+import { PageSelector } from '../../components/PageSelector';
 import { getWindowsDimensions } from '../../services/screen-size.service';
 
 export function Home() {
   const currentUser = getCurrentUser();
-  const [width, setWidth] = useState<number>();
-  const [heigth, setHeigth] = useState<number>();
+
+  const [books, setBooks] = useState([]);
+  const [page, setPage] = useState(1);
+  const [booksPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState();
 
   const navigate = useNavigate();
+
+  const [width, setWidth] = useState<number>();
 
   useEffect(() => {
     !currentUser && navigate(`${env.ROUTER_UTILS.base.login}`);
   });
+
+  const loadBooks = useCallback(async (page, booksPerPage) => {
+    getBooks(page, booksPerPage).then((response) => {
+      response &&
+        (setTotalPages(response.data.totalPages),
+        setPage(response.data.page),
+        setBooks(response.data.data));
+    });
+  }, []);
+
+  useEffect(() => {
+    loadBooks(page, booksPerPage);
+  }, [loadBooks, booksPerPage, page]);
+
   useEffect(() => {
     const handleSize = () => {
-      const { width, height } = getWindowsDimensions();
+      const { width } = getWindowsDimensions();
       setWidth(width);
-      setHeigth(height);
     };
+
     window.addEventListener('resize', handleSize);
     return () => window.removeEventListener('resize', handleSize);
   }, []);
 
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    setHeigth(window.innerHeight);
-  }, []);
-
   return (
     <Layout hasHeader={true}>
-      <HomeContainer heigth={heigth ? heigth : window.innerHeight}>
-        <h1>Home Content</h1>
+      <HomeContainer width={width ? width : window.innerWidth}>
+        {books.length > 0 ? (
+          <Cards books={books} />
+        ) : (
+          <p>Livros não encontrados</p>
+        )}
+        {totalPages && (
+          <PageSelector
+            page={page}
+            totalPages={totalPages}
+            onBeforePage={() => page > 1 && setPage((prevPage) => prevPage - 1)}
+            onNextPage={() =>
+              page < totalPages && setPage((prevPage) => prevPage + 1)
+            }
+          />
+        )}
       </HomeContainer>
     </Layout>
   );

@@ -112,6 +112,12 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   .icon-pressable:hover {
     color: ${({ theme }) => theme.colors.secondaryColor};
   }
+  .icon-pressable--disabled {
+    color: ${({ theme }) => theme.colors.xLightGray};
+    border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme.colors.lightGray};
+    cursor: not-allowed;
+  }
 
   .btn-only-cancel {
     width: 200px;

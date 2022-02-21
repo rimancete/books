@@ -11,13 +11,11 @@ interface LayoutProps {
 
 export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
   const [width, setWidth] = useState<number>();
-  const [heigth, setHeigth] = useState<number>();
 
   useEffect(() => {
     const handleSize = () => {
-      const { width, height } = getWindowsDimensions();
+      const { width } = getWindowsDimensions();
       setWidth(width);
-      setHeigth(height);
     };
 
     window.addEventListener('resize', handleSize);
@@ -26,7 +24,7 @@ export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
   return (
     <Styled.Container hasHeader={hasHeader}>
       {bgImage ? (
-        width && heigth ? (
+        width ? (
           <Styled.BGImage>
             <img
               src={width < 768 ? bgImage : '/assets/images/background.png'}
@@ -55,7 +53,7 @@ export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
         </Styled.BGImage>
       )}
 
-      {hasHeader && <Header />}
+      {hasHeader && <Header width={window.innerWidth} />}
       <div className="content">{children}</div>
     </Styled.Container>
   );

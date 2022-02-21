@@ -13,7 +13,7 @@ async function signIn(body: AuthenticateModel) {
 }
 
 function getCurrentUser() {
-  const user = storage.get(StorageItemEnum.User);
+  const user: UserModel | undefined = storage.get(StorageItemEnum.User);
   return user;
 }
 

@@ -9,12 +9,12 @@ export const Title = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-`;
-export const TitleCompany = styled.h1<TitleProps>`
-  margin-right: 10px;
-  color: ${(p) => p.colorTitle};
+  img {
+    margin-right: 10px;
+  }
 `;
 export const TitleProduct = styled.h1<TitleProps>`
   font-weight: 300;
+  font-size: ${({ theme }) => theme.font.sizes.large};
   color: ${(p) => p.colorTitle};
 `;

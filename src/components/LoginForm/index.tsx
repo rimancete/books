@@ -32,8 +32,6 @@ export function LoginForm() {
     e.preventDefault();
     if (!email || !password) return setError();
 
-    // email: 'desafio@ioasys.com.br',
-    // password: '12341234',
     await signIn({
       email,
       password,

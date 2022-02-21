@@ -7,6 +7,7 @@ export const theme = {
     mediumGray: '#C096A7',
     darkGray: 'rgba(0, 0, 0, 0.4)',
     messageDiv: 'rgba(255, 255, 255, 0.4)',
+    xLightGray: '#999',
   },
   font: {
     family: {
@@ -14,10 +15,10 @@ export const theme = {
       secondary: "'Montserrat', sans-serif",
     },
     sizes: {
-      xsmall: '1.4rem',
-      small: '1.6rem',
+      xsmall: '1.2rem',
+      small: '1.4rem',
       medium: '2rem',
-      large: '3.2rem',
+      large: '2.8rem',
       xlarge: '4.0rem',
       xxlarge: '4.8rem',
       huge: '5.6rem',

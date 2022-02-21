@@ -1,4 +1,4 @@
-import { Title, TitleCompany, TitleProduct } from './styles';
+import { Title, TitleProduct } from './styles';
 
 interface ProductTitleProps {
   colorTitle: string;
@@ -7,7 +7,7 @@ interface ProductTitleProps {
 export function ProductTitle({ colorTitle }: ProductTitleProps) {
   return (
     <Title>
-      <TitleCompany colorTitle={colorTitle}>ioasys</TitleCompany>
+      <img src="/assets/images/logo.png" alt="" />
       <TitleProduct colorTitle={colorTitle}>Books</TitleProduct>
     </Title>
   );

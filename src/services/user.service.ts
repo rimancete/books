@@ -3,12 +3,15 @@ import authHeader from './auth.header';
 
 const auth = authHeader();
 
-async function getBooks() {
+async function getBooks(page: number, booksPerPage: number) {
   if (auth.Authorization) {
-    const response = await axios.get('/books?page=1&amount=12', {
-      headers: auth,
-    });
-    return response.data;
+    const response = await axios.get(
+      `/books?page=${page}&amount=${booksPerPage}`,
+      {
+        headers: auth,
+      },
+    );
+    return response;
   }
 }
 // id "61c9c28fcc498b5c08845ce3"
