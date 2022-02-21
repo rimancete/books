@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
 import { BookDataType } from '../../interfaces/data';
-import { serializedModalTitle } from '../../services/serialize-string.service';
+import {
+  serializedCardTitle,
+  serializedModalTitle,
+} from '../../services/serialize-string.service';
 import {
   ModalBackground,
   ModalContainer,
   ModalContent,
+  ModalContentBody,
+  ModalContentBodyContent,
+  ModalContentBodyText,
+  ModalContentBodyTitle,
+  ModalContentFooter,
   ModalContentHeader,
   ModalContentHeaderImage,
   ModalContentHeaderImageDefault,
@@ -63,6 +71,55 @@ export function BookModal({ data }: BookModalProps) {
                 ))}
               </ModalContentTitleAuthor>
             </ModalContentTitle>
+
+            <ModalContentBody>
+              <ModalContentBodyTitle>INFORMAÇÕES</ModalContentBodyTitle>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>Páginas</ModalContentBodyTitle>
+                <ModalContentBodyText>
+                  {data.pageCount} páginas
+                </ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>Editora</ModalContentBodyTitle>
+                <ModalContentBodyText>
+                  Editora {data.publisher}
+                </ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>Publicação</ModalContentBodyTitle>
+                <ModalContentBodyText>{data.published}</ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>Idioma</ModalContentBodyTitle>
+                <ModalContentBodyText>{data.language}</ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>Título Original</ModalContentBodyTitle>
+                <ModalContentBodyText>
+                  {serializedCardTitle(data.title)}
+                </ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>ISBN-10</ModalContentBodyTitle>
+                <ModalContentBodyText>{data.isbn10}</ModalContentBodyText>
+              </ModalContentBodyContent>
+
+              <ModalContentBodyContent>
+                <ModalContentBodyTitle>ISBN-3</ModalContentBodyTitle>
+                <ModalContentBodyText>{data.isbn13}</ModalContentBodyText>
+              </ModalContentBodyContent>
+            </ModalContentBody>
+
+            <ModalContentFooter>
+              <ModalContentBodyTitle>RESENHA DA EDITORA</ModalContentBodyTitle>
+            </ModalContentFooter>
           </ModalContentHeader>
         </ModalContent>
       </ModalBackground>

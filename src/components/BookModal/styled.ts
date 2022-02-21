@@ -36,6 +36,7 @@ export const ModalContent = styled.div`
   h1 {
     margin-bottom: 0;
   }
+  h3,
   h2 {
     margin: 0;
   }
@@ -75,14 +76,39 @@ export const ModalContentTitleText = styled.h1`
   `}
 `;
 
-export const ModalContentTitleAuthor = styled.div`
-  display: flex;
-`;
+export const ModalContentTitleAuthor = styled.div``;
 
-export const ModalContentTitleAuthorText = styled.h2`
+export const ModalContentTitleAuthorText = styled.h3`
   ${({ theme }) => css`
     font-weight: 400;
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.secondaryColor};
+    display: inline;
   `}
 `;
+
+export const ModalContentBody = styled.div`
+  margin: 40px 0;
+`;
+
+export const ModalContentBodyTitle = styled.h2`
+  ${({ theme }) => css`
+    font-weight: 500;
+    font-size: ${theme.font.sizes.xsmall};
+  `}
+`;
+export const ModalContentBodyContent = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const ModalContentBodyText = styled.h3`
+  ${({ theme }) => css`
+    font-weight: 400;
+    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.xLightGray};
+  `}
+`;
+
+export const ModalContentFooter = styled.div``;
