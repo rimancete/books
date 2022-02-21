@@ -16,9 +16,10 @@ import {
 
 export type BookCardProps = {
   book: BookDataType;
+  onClick?: () => void;
 };
 
-export const BookCard = ({ book }: BookCardProps) => {
+export const BookCard = ({ book, onClick }: BookCardProps) => {
   const [imgLoadError, setImgLoadError] = useState(false);
   const imageError = async (url: string) => {
     const tester = new Image();
@@ -30,7 +31,7 @@ export const BookCard = ({ book }: BookCardProps) => {
     imageError(book.imageUrl);
   });
   return (
-    <BookCardContainer>
+    <BookCardContainer onClick={onClick}>
       <BookCardContent>
         <BookCardContentImage>
           {!imgLoadError ? (

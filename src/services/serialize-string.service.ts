@@ -5,5 +5,12 @@ function serializedCardTitle(name: string) {
   }
   return newName;
 }
+function serializedModalTitle(name: string) {
+  let newName = name ? name : '';
+  if (name && name.length > 30) {
+    newName = newName.substring(0, 30) + '...';
+  }
+  return newName;
+}
 
-export { serializedCardTitle };
+export { serializedCardTitle, serializedModalTitle };
