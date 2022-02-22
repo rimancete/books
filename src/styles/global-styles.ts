@@ -56,8 +56,8 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     background: ${({ theme }) => theme.colors.white};
     border-radius: 20px;
     border: none;
-    padding: 10px 25px;
-    font-size: ${({ theme }) => theme.font.sizes.medium};
+    padding: 10px 17px;
+    font-size: ${({ theme }) => theme.font.sizes.xxsmall};
     /* transition: all, 0.3s; */
   }
   /* button:hover {
@@ -71,14 +71,14 @@ export const GlobalStyles = createGlobalStyle<Theme>`
   } */
 
   input[type='text'],[type='password'] {
-      font-size: ${({ theme }) => theme.font.sizes.medium};
+      font-size: ${({ theme }) => theme.font.sizes.xxsmall};
       width: 100%;
       background: transparent;
       border: none;
       color: ${({ theme }) => theme.colors.white};
       padding: 5px 0px;
       &::placeholder {
-        font-size: 1em;
+        font-size: ${({ theme }) => theme.font.sizes.xsmall};
         color: ${({ theme }) => theme.colors.mediumGray};
       }
   }

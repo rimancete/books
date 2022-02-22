@@ -12,5 +12,6 @@ export const LoginContainer = styled.div<LoginContainerProps>`
     p.width && p.width > 768 ? 'flex-start' : 'center'};
   align-items: center;
   height: ${(p) => p.heigth}px;
+  padding-top: ${({ theme }) => theme.spacings.medium};
   margin-left: ${(p) => (p.width && p.width > 768 ? '100px' : '')};
 `;

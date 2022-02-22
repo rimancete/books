@@ -4,6 +4,7 @@ export const LoginFormContent = styled.div`
   width: 100%;
   max-width: 500px;
   background: transparent;
+  margin-right: 5px;
 `;
 
 export const Form = styled.form`

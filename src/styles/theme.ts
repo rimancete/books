@@ -8,6 +8,7 @@ export const theme = {
     darkGray: 'rgba(0, 0, 0, 0.4)',
     messageDiv: 'rgba(255, 255, 255, 0.4)',
     xLightGray: '#999',
+    tertiaryColor: 'rgba(255, 255, 255, 0.5)',
   },
   font: {
     family: {
@@ -17,6 +18,7 @@ export const theme = {
     sizes: {
       xsmall: '1.2rem',
       small: '1.4rem',
+      xxsmall: '1.6rem',
       medium: '2rem',
       large: '2.8rem',
       xlarge: '4.0rem',
