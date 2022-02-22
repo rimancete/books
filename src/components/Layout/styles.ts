@@ -19,6 +19,7 @@ export const Container = styled.div<ContainerProps>`
 
       @media ${theme.media.lteMinimum} {
         margin-left: ${theme.spacings.medium};
+        margin-right: ${theme.spacings.medium};
         input {
           &::placeholder {
             font-size: ${theme.font.sizes.small};
