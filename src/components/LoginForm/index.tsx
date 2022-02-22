@@ -7,6 +7,8 @@ import {
   InputContent,
   FormErrorContent,
   ErrorMessage,
+  FormErrorTriangle,
+  FormErrorContainer,
 } from './styles';
 import { TextInput } from './TextInput';
 import { useNavigate } from 'react-router-dom';
@@ -79,9 +81,12 @@ export function LoginForm() {
           <Button type="submit">Entrar</Button>
         </InputContent>
         {formError && (
-          <FormErrorContent>
-            <ErrorMessage>{errorMessage}</ErrorMessage>
-          </FormErrorContent>
+          <FormErrorContainer>
+            <FormErrorTriangle />
+            <FormErrorContent>
+              <ErrorMessage>{errorMessage}</ErrorMessage>
+            </FormErrorContent>
+          </FormErrorContainer>
         )}
       </Form>
     </LoginFormContent>

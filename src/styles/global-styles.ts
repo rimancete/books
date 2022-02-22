@@ -58,17 +58,6 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     border: none;
     padding: 10px 17px;
     font-size: ${({ theme }) => theme.font.sizes.xxsmall};
-    /* transition: all, 0.3s; */
-  }
-  /* button:hover {
-    background: ${({ theme }) => theme.colors.secondaryColor};
-    color: ${({ theme }) => theme.colors.white};
-  }
-
-  button:disabled {
-      background: ${({ theme }) => theme.colors.mediumGray};
-      cursor: not-allowed;
-  } */
 
   input[type='text'],[type='password'] {
       font-size: ${({ theme }) => theme.font.sizes.xxsmall};

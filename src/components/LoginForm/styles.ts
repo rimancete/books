@@ -41,3 +41,18 @@ export const ErrorMessage = styled.h4`
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;
+
+export const FormErrorContainer = styled.div`
+  position: relative;
+`;
+
+export const FormErrorTriangle = styled.div`
+  position: relative;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent
+    ${({ theme }) => theme.colors.messageDiv} transparent;
+`;

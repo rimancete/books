@@ -153,7 +153,6 @@ export const ModalContentData = styled.div<ModalContentProps>`
   margin-bottom: ${(p) => (p.width < 768 ? '' : '20px')};
 `;
 
-// testar em mobile
 export const ModalContentBodyTitleContent = styled.div`
   width: 80px;
   margin: -3px 0;
