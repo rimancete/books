@@ -42,7 +42,9 @@ export const Layout = ({
           <Styled.BGImage>
             <img
               src={
-                width && width < 768 ? bgImage : '/assets/images/background.png'
+                window.innerWidth < 768
+                  ? bgImage
+                  : '/assets/images/background.png'
               }
               width={window.innerWidth}
               height={'100%'}
