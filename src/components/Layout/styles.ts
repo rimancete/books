@@ -42,10 +42,10 @@ export const BGImage = styled.div`
   width: 100%;
 `;
 
-export const BackgroundGradient = styled.div`
+export const BackgroundGradient = styled.div<ContainerProps>`
   height: 100%;
   background-color: #f5f5ee;
-  background-image: linear-gradient(#f5f5ee, #f3e7f3);
+  background-image: linear-gradient(#f5f5ee, #f2eaf3);
 `;
 
 export const HeaderContent = styled.div<ContainerProps>`

@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
   }
 `;
 
-export const ModalBackground = styled.div`
+export const ModalBackground = styled.div<ModalContentProps>`
   width: 100vw;
   height: 100vh;
   background: ${({ theme }) => theme.colors.darkGray};
@@ -20,7 +20,7 @@ export const ModalBackground = styled.div`
   left: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${(p) => (p.width < 768 ? 'center' : '')};
   align-items: center;
 `;
 
@@ -33,6 +33,7 @@ export const ModalContent = styled.div<ModalContentProps>`
   overflow-y: ${(p) => (p.width < 768 ? 'auto' : '')};
   flex-direction: ${(p) => (p.width < 768 ? 'column' : '')};
   max-width: ${(p) => (p.width < 768 ? '' : '769px')};
+  margin-top: ${(p) => (p.width < 768 ? '' : '10px')};
   ${({ theme }) => css`
     background: ${theme.colors.white};
     width: 85%;
@@ -72,16 +73,19 @@ export const ModalContentHeaderImage = styled.div<ModalContentProps>`
   }
 `;
 
-export const ModalContentHeaderImageDefault = styled.div`
+export const ModalContentHeaderImageDefault = styled.div<ModalContentProps>`
+  width: ${(p) => (p.width < 768 ? '240px' : '349px')};
+  height: ${(p) => (p.width < 768 ? '351px' : '512px')};
   ${({ theme }) => css`
-    width: 240px;
-    height: 351px;
     background-color: ${theme.colors.secondaryColor};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   `}
 `;
 
-export const ModalContentTitle = styled.div``;
+export const ModalContentTitle = styled.div`
+  display: inline;
+  text-align: justify;
+`;
 export const ModalContentTitleText = styled.h1<ModalContentProps>`
   margin: ${(p) => (p.width < 768 ? '' : '0')};
   ${({ theme }) => css`
@@ -142,15 +146,7 @@ export const ModalContentFooterContent = styled.div`
     margin-right: 10px;
   }
 `;
-export const ModalContentFooterdescription = styled.div<ModalContentProps>``;
 
-export const ModalContentFooterDescriptionText = styled.span`
-  ${({ theme }) => css`
-    font-weight: 400;
-    font-size: ${theme.font.sizes.xsmall};
-    color: ${theme.colors.xLightGray};
-  `}
-`;
 export const ModalContentData = styled.div<ModalContentProps>`
   overflow: ${(p) => (p.width < 768 ? '' : 'auto')};
   margin-top: ${(p) => (p.width < 768 ? '' : '20px')};
@@ -162,9 +158,7 @@ export const ModalContentBodyTitleContent = styled.div`
   width: 80px;
   margin: -3px 0;
 `;
-export const ModalContentFooterTitleContent = styled.div<ModalContentProps>`
-  margin-bottom: ${(p) => (p.width < 768 ? '' : '-10px')};
-`;
+export const ModalContentFooterTitleContent = styled.div<ModalContentProps>``;
 
 export const ModalContentFooterText = styled.h3`
   ${({ theme }) => css`

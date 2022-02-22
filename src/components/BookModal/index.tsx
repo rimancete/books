@@ -15,8 +15,6 @@ import {
   ModalContentData,
   ModalContentFooter,
   ModalContentFooterContent,
-  ModalContentFooterdescription,
-  ModalContentFooterDescriptionText,
   ModalContentFooterText,
   ModalContentFooterTitleContent,
   ModalContentHeader,
@@ -54,7 +52,11 @@ export function BookModal({ data }: BookModalProps) {
 
   return (
     <ModalContainer>
-      <ModalBackground onClick={handleClose} className="modal-visible">
+      <ModalBackground
+        onClick={handleClose}
+        className="modal-visible"
+        width={window.innerWidth}
+      >
         <ModalCloseButton>
           <IoCloseOutline
             size={40}
@@ -76,13 +78,13 @@ export function BookModal({ data }: BookModalProps) {
             {!imgLoadError ? (
               <img src={data.imageUrl} />
             ) : (
-              <ModalContentHeaderImageDefault />
+              <ModalContentHeaderImageDefault width={window.innerWidth} />
             )}
           </ModalContentHeaderImage>
           <ModalContentData width={window.innerWidth}>
             <ModalContentHeader width={window.innerWidth}>
               <ModalContentTitle>
-                <ModalContentTitleText width={window.innerWidth}>
+                <ModalContentTitleText id="title" width={window.innerWidth}>
                   {serializedModalTitle(data.title)}
                 </ModalContentTitleText>
                 <ModalContentTitleAuthor>

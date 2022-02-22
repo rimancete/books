@@ -50,7 +50,7 @@ export function Home() {
   }, []);
 
   return (
-    <Layout hasHeader={true}>
+    <Layout hasHeader={true} isHome={true}>
       <HomeContainer width={width ? width : window.innerWidth}>
         {books.length > 0 ? (
           <Cards books={books} />

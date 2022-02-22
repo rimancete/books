@@ -7,9 +7,15 @@ interface LayoutProps {
   children: React.ReactNode;
   bgImage?: string;
   hasHeader?: boolean;
+  isHome?: boolean;
 }
 
-export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
+export const Layout = ({
+  children,
+  bgImage,
+  hasHeader,
+  isHome,
+}: LayoutProps) => {
   const [width, setWidth] = useState<number>();
 
   useEffect(() => {
@@ -43,6 +49,14 @@ export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
             />
           </Styled.BGImage>
         )
+      ) : isHome && window.innerWidth > 768 ? (
+        <Styled.BGImage>
+          <img
+            src={'/assets/images/background-home.png'}
+            width={window.innerWidth}
+            height={'100%'}
+          />
+        </Styled.BGImage>
       ) : (
         <Styled.BGImage>
           <Styled.BackgroundGradient
@@ -53,7 +67,7 @@ export const Layout = ({ children, bgImage, hasHeader }: LayoutProps) => {
         </Styled.BGImage>
       )}
 
-      {hasHeader && <Header width={window.innerWidth} />}
+      {hasHeader && <Header width={width ? width : window.innerWidth} />}
       <div className="content">{children}</div>
     </Styled.Container>
   );
