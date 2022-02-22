@@ -5,7 +5,7 @@ Este projeto lista livros, exibe seus detalhes somente para usuários autenticad
 
 ## Screenshots
 
-### Browser Perspectiva:
+### Browser/Mobile Perspectiva:
 ![nav](./docs/nav.gif)
 
 ## Bibliotecas utilizadas
