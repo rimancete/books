@@ -19,7 +19,7 @@ Este projeto lista livros, exibe seus detalhes somente para usuários autenticad
 # Instalando e rodando o projeto
 
 ```
- yarn i
+ yarn
 ```
 
 ```
