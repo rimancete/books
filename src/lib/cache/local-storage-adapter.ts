@@ -1,5 +1,6 @@
 export enum StorageItemEnum {
   Auth = '@App:auth',
+  Token = '@App:token',
   User = '@App:user',
 }
 

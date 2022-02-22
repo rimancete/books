@@ -7,6 +7,7 @@ async function signIn(body: AuthenticateModel) {
     .post<UserModel>('/auth/sign-in', body)
     .then((response) => {
       storage.set(StorageItemEnum.Auth, response.headers['authorization']);
+      storage.set(StorageItemEnum.Token, response.headers['refresh-token']);
       storage.set(StorageItemEnum.User, response.data);
     });
   return response;
@@ -20,6 +21,7 @@ function getCurrentUser() {
 async function logout() {
   storage.remove(StorageItemEnum.User);
   storage.remove(StorageItemEnum.Auth);
+  storage.remove(StorageItemEnum.Token);
 }
 
 export { signIn, getCurrentUser, logout };

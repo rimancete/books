@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+export const PageSelectorControl = styled.div``;
 export const PageSelectorContainer = styled.div`
   display: flex;
   flex-direction: row;

@@ -1,4 +1,8 @@
-import { PageSelectorContainer, PageSelectorContainerText } from './styles';
+import {
+  PageSelectorContainer,
+  PageSelectorContainerText,
+  PageSelectorControl,
+} from './styles';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 interface PageSelectorProps {
@@ -15,24 +19,48 @@ export const PageSelector = ({
   totalPages,
 }: PageSelectorProps) => {
   return (
-    <PageSelectorContainer>
-      <FiChevronLeft
-        size={40}
-        className={page > 1 ? 'icon-pressable' : 'icon-pressable--disabled'}
-        style={{ padding: 8 }}
-        onClick={onBeforePage}
-      />
-      <PageSelectorContainerText>
-        Página {page} de {totalPages}
-      </PageSelectorContainerText>
-      <FiChevronRight
-        size={40}
-        className={
-          page < totalPages ? 'icon-pressable' : 'icon-pressable--disabled'
-        }
-        style={{ padding: 8 }}
-        onClick={onNextPage}
-      />
-    </PageSelectorContainer>
+    <PageSelectorControl>
+      {window.innerWidth < 768 ? (
+        <PageSelectorContainer>
+          <FiChevronLeft
+            size={40}
+            className={page > 1 ? 'icon-pressable' : 'icon-pressable--disabled'}
+            style={{ padding: 8 }}
+            onClick={onBeforePage}
+          />
+          <PageSelectorContainerText>
+            Página {page} de {totalPages}
+          </PageSelectorContainerText>
+          <FiChevronRight
+            size={40}
+            className={
+              page < totalPages ? 'icon-pressable' : 'icon-pressable--disabled'
+            }
+            style={{ padding: 8 }}
+            onClick={onNextPage}
+          />
+        </PageSelectorContainer>
+      ) : (
+        <PageSelectorContainer>
+          <PageSelectorContainerText>
+            Página {page} de {totalPages}
+          </PageSelectorContainerText>
+          <FiChevronLeft
+            size={40}
+            className={page > 1 ? 'icon-pressable' : 'icon-pressable--disabled'}
+            style={{ padding: 8 }}
+            onClick={onBeforePage}
+          />
+          <FiChevronRight
+            size={40}
+            className={
+              page < totalPages ? 'icon-pressable' : 'icon-pressable--disabled'
+            }
+            style={{ padding: 8 }}
+            onClick={onNextPage}
+          />
+        </PageSelectorContainer>
+      )}
+    </PageSelectorControl>
   );
 };
