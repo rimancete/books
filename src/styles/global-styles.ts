@@ -58,7 +58,7 @@ export const GlobalStyles = createGlobalStyle<Theme>`
     border: none;
     padding: 10px 17px;
     font-size: ${({ theme }) => theme.font.sizes.xxsmall};
-
+  }
   input[type='text'],[type='password'] {
       font-size: ${({ theme }) => theme.font.sizes.xxsmall};
       width: 100%;
